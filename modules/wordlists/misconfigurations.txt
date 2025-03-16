@@ -1,0 +1,102 @@
+# Web Server Misconfigurations
+Directory listing enabled
+Default credentials in use
+Verbose error messages
+Debug mode enabled
+Development/test environments accessible
+Backup files accessible
+Configuration files exposed
+Administrative interfaces exposed
+Default installations with default pages
+Server-side includes enabled
+WebDAV enabled
+Unrestricted file uploads
+Incomplete or improper access controls
+Lack of input validation
+Cross-Origin Resource Sharing (CORS) misconfigurations
+Insecure direct object references
+Missing security headers
+Insecure SSL/TLS configurations
+Vulnerable components/libraries
+Open redirects
+Server information disclosure
+Hidden directories accessible
+Improper cookie flags (missing Secure/HttpOnly)
+Improper caching directives
+Weak password policies
+Session fixation allowed
+Clickjacking protection missing
+MIME sniffing potential
+Outdated software versions
+HTTP TRACE method enabled
+Path traversal possible
+Publicly accessible logs
+Password autocomplete enabled
+Missing rate limiting
+Open ports unnecessarily exposed
+Insecure deserialization
+Inadequate password hashing
+Lack of brute force protection
+Improper implementation of CSRF protection
+Missing input sanitization
+Flawed authentication mechanisms
+Default or guessable CAPTCHA
+Missing file extension validation
+Improper handling of null bytes
+Inadequate role-based access control
+Insecure third-party integrations
+Unpatched security vulnerabilities
+Missing SPF/DKIM/DMARC records
+Sensitive information in JavaScript
+Git/SVN repositories exposed
+Missing subresource integrity
+Insecure JWTs (weak algorithm, no expiry)
+Credentials in code or config files
+Excessive privileges for service accounts
+Unencrypted communications
+Lack of secure flag on cookies
+Plaintext passwords stored/transmitted
+Hardcoded API keys/secrets
+Excessive information in error messages
+Missing Content Security Policy
+Improper secure coding practices
+Database connection strings visible
+Default/weak crypto keys
+Lack of account lockout
+Missing server-side validation
+Insecure randomness
+Excessive user information disclosure
+Anonymous access enabled
+Verbose HTTP headers
+Improper certificate validation
+
+# API Misconfigurations
+No API versioning
+Missing input validation
+Excessive data exposure
+Broken access controls
+Broken authentication
+Excessive rate limiting
+Missing rate limiting
+Security misconfiguration
+Lack of resources & rate limiting
+Broken function level authorization
+Mass assignment
+Improper assets management
+Injections possible
+Insufficient logging & monitoring
+CSRF token missing
+API keys without expiration
+Missing API documentation
+Missing schema validation
+Insecure default configurations
+Improper error handling
+Exposed API metrics
+Missing API inventory
+Credential leaks in API responses
+Undocumented endpoints
+API abuse protection missing
+Business logic vulnerabilities
+JWT vulnerabilities
+Lack of access scoping
+Publicly accessible admin API endpoints

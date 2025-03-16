@@ -1,0 +1,74 @@
+# Security Headers Wordlist for MR Legacy Bug Bounty Tool
+# Author: Abdulrahman Muhammad (0xLegacy)
+# This file contains a list of important security headers to check
+# Each line represents a single header name
+
+# Core Security Headers
+Strict-Transport-Security
+Content-Security-Policy
+X-Content-Type-Options
+X-Frame-Options
+X-XSS-Protection
+Referrer-Policy
+Permissions-Policy
+Feature-Policy
+
+# Cache Control & Caching Security
+Cache-Control
+Clear-Site-Data
+Pragma
+
+# Cross-Origin Related Headers
+Cross-Origin-Embedder-Policy
+Cross-Origin-Opener-Policy
+Cross-Origin-Resource-Policy
+Access-Control-Allow-Origin
+Access-Control-Allow-Credentials
+Access-Control-Allow-Methods
+Access-Control-Allow-Headers
+Access-Control-Expose-Headers
+Access-Control-Max-Age
+Timing-Allow-Origin
+
+# Content Related Security Headers
+Content-Type
+X-Content-Type-Options
+X-Permitted-Cross-Domain-Policies
+X-Download-Options
+X-DNS-Prefetch-Control
+X-UA-Compatible
+
+# Security Mechanism Headers
+Content-Security-Policy-Report-Only
+Public-Key-Pins
+Public-Key-Pins-Report-Only
+Expect-CT
+Report-To
+NEL
+
+# Server Information Headers (To check for information disclosure)
+Server
+X-Powered-By
+X-AspNet-Version
+X-AspNetMvc-Version
+X-Runtime
+X-Version
+X-Generator
+
+# Custom Headers (Often used for security)
+X-XSS-Protection-Mode
+X-Request-ID
+X-Correlation-ID
+X-RateLimit-Limit
+X-RateLimit-Remaining
+X-RateLimit-Reset
+X-Rate-Limit
+X-Rate-Limit-Limit
+X-Rate-Limit-Remaining
+X-Rate-Limit-Reset
+
+# Legacy and Additional Headers
+P3P
+X-WebKit-CSP
+X-Content-Security-Policy
+X-Robots-Tag

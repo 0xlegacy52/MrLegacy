@@ -1,0 +1,13 @@
+ __  __ ____     _                                    
+|  \/  |  _ \   | |    ___  __ _  __ _  ___ _   _    
+| |\/| | |_) |  | |   / _ \/ _` |/ _` |/ __| | | |   
+| |  | |  _ <   | |__|  __/ (_| | (_| | (__| |_| |   
+|_|  |_|_| \_\  |_____\___|\__, |\__,_|\___|\__, |   
+                           |___/            |___/    
+                                        
+       Bug Bounty Hunting Tool - v1.0
+       Author: Abdulrahman Muhammad (0xLegacy)     
+    
+    "If debugging is the process of removing bugs, then 
+     programming must be the process of putting them in."
+                                - Edsger W. Dijkstra

