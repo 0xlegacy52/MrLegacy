@@ -67,6 +67,7 @@ To install dependencies on Kali Linux or other Debian-based distributions:
 ```bash
 sudo apt update
 sudo apt install nmap whois dnsutils curl jq
+./install.sh
 ```
 
 The script will check for other required tools and provide installation instructions.
